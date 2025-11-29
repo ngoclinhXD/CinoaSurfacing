@@ -52,7 +52,7 @@ Please kindly report in [Issues](https://github.com/ngoclinhXD/CinoaSurfacing/is
 
 ## 📄 License
 
-MIT License. Free to cook. 👨‍🍳
+CC BY-NC-SA 4.0 License. Cook as you will, but not profit from this. 👨‍🍳
 
 ---
 
