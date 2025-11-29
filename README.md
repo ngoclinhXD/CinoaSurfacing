@@ -17,7 +17,7 @@ CinoaSurfacing is a native macOS utility that replaces your standard search bar 
 
 1.  **Clone the repo:**
     ```bash
-    git clone https://github.com/yourusername/CinoaSurfacing.git
+    git clone https://github.com/ngoclinhXD/CinoaSurfacing.git
     cd CinoaSurfacing
     ```
 
