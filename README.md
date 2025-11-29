@@ -57,3 +57,5 @@ CC BY-NC-SA 4.0 License. Cook as you will, but not profit from this. 👨‍🍳
 ---
 
 **Built by ngoclin.h with ❤️**
+
+<img width="1920" height="1080" alt="ngoclin h" src="https://github.com/user-attachments/assets/0e866537-83a7-4617-b315-e6f0fee36d55" />
