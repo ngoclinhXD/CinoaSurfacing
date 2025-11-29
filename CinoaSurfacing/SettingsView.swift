@@ -1,9 +1,11 @@
 import SwiftUI
+import ServiceManagement
 
 struct SettingsView: View {
-    // 1. Connect to simple permanent storage (UserDefaults)
     @AppStorage("geminiApiKey") private var apiKey: String = ""
     @AppStorage("geminiModelName") private var modelName: String = "gemini-2.5-flash"
+    
+    @State private var launchAtLogin: Bool = SMAppService.mainApp.status == .enabled
     
     var body: some View {
         VStack(spacing: 20) {
@@ -15,7 +17,7 @@ struct SettingsView: View {
                 Text("Gemini API Key")
                     .font(.caption)
                     .foregroundColor(.secondary)
-                SecureField("Paste API key here", text: $apiKey)
+                SecureField("Paste AIza... key here", text: $apiKey)
                     .textFieldStyle(.roundedBorder)
             }
             
@@ -26,11 +28,33 @@ struct SettingsView: View {
                     .foregroundColor(.secondary)
                 TextField("e.g. gemini-2.5-flash", text: $modelName)
                     .textFieldStyle(.roundedBorder)
-                
-                Link("Check available models", destination: URL(string: "https://ai.google.dev/models/gemini")!)
-                    .font(.caption2)
-                    .foregroundColor(.blue)
             }
+            
+            Divider()
+            
+            // --- NEW FEATURES ---
+            
+            // 1. Launch at Login Toggle (FIXED SYNTAX)
+            Toggle("Launch at Login", isOn: $launchAtLogin)
+                .toggleStyle(.switch)
+                .onChange(of: launchAtLogin) { _, newValue in
+                    toggleLaunchAtLogin(enabled: newValue)
+                }
+            
+            // 2. Check for Updates Button
+            Button(action: {
+                if let url = URL(string: "https://github.com/ngoclinhXD/CinoaSurfacing/releases") {
+                    NSWorkspace.shared.open(url)
+                }
+            }) {
+                HStack {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                    Text("Check for Updates")
+                }
+                .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.bordered)
+            .controlSize(.large)
             
             Divider()
             
@@ -47,5 +71,21 @@ struct SettingsView: View {
         }
         .padding(30)
         .frame(width: 350)
+        .onAppear {
+            launchAtLogin = SMAppService.mainApp.status == .enabled
+        }
+    }
+    
+    func toggleLaunchAtLogin(enabled: Bool) {
+        do {
+            if enabled {
+                try SMAppService.mainApp.register()
+            } else {
+                try SMAppService.mainApp.unregister()
+            }
+        } catch {
+            print("Failed to update launch at login: \(error)")
+            launchAtLogin = SMAppService.mainApp.status == .enabled
+        }
     }
 }
