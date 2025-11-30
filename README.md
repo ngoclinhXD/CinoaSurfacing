@@ -2,7 +2,7 @@
 
 **Spotlight, can't search files (yet) but can think.**
 
-CinoaSurfacing is a native macOS utility that replaces your standard search bar with a multimodal AI agent. Powered by Google Gemini, it lives invisibly in your background and helps you code, write, and analyze your screen context instantly.
+CinoaSurfacing is a native macOS utility thats add Gemini to your Mac, it lives invisibly in your background and helps you code, write, and analyze your screen context instantly.
 
 <img width="1710" height="739" alt="Screenshot 2025-11-29 at 21 27 09" src="https://github.com/user-attachments/assets/ea909ca0-46d1-4903-a27b-378a9dff098c" />
 
